@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seating Planner BD</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1 data-i18n="title">Seating Planner BD</h1>
+    <p class="subtitle" data-i18n="subtitle">Arrange classroom and exam-hall seats in seconds — fully offline, in your browser.</p>
+  </div>
+  <button id="langBtn" type="button" class="lang-btn">বাংলা</button>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2 data-i18n="studentsLabel">Student names</h2>
+    <p class="hint" data-i18n="studentsHint">One name per line. Paste a class list to start.</p>
+    <textarea id="namesInput" rows="8" placeholder="Rahim&#10;Karim&#10;Fahad"></textarea>
+    <div class="row between">
+      <span id="namesCount" class="count">0 students</span>
+      <span class="btn-group">
+        <button id="demoBtn" type="button" class="btn secondary" data-i18n="demoBtn">Load demo class</button>
+        <button id="clearNamesBtn" type="button" class="btn secondary" data-i18n="clearNamesBtn">Clear names</button>
+      </span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="hallLabel">Hall layout</h2>
+    <div class="row gap">
+      <label class="field"><span data-i18n="rowsLabel">Rows</span>
+        <input id="rowsInput" type="number" min="2" max="10" step="1" value="5">
+      </label>
+      <label class="field"><span data-i18n="colsLabel">Columns</span>
+        <input id="colsInput" type="number" min="2" max="10" step="1" value="5">
+      </label>
+    </div>
+    <fieldset class="modes">
+      <legend data-i18n="modeLabel">Arrangement</legend>
+      <label><input type="radio" name="mode" value="random" checked> <span data-i18n="modeRandom">Random shuffle</span></label>
+      <label><input type="radio" name="mode" value="alpha-snake"> <span data-i18n="modeAlphaSnake">Alphabetical (snake rows)</span></label>
+      <label><input type="radio" name="mode" value="spaced"> <span data-i18n="modeSpaced">Spaced out (exam mode)</span></label>
+    </fieldset>
+    <p id="capacityHint" class="hint"></p>
+    <button id="generateBtn" type="button" class="btn primary" data-i18n="generateBtn">Generate plan</button>
+    <p id="errorBox" class="error" style="display:none"></p>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="planTitle">Seating plan</h2>
+    <p id="noPlanMsg" class="hint" data-i18n="noPlanMsg">No plan yet — add student names and press Generate plan.</p>
+    <div id="frontLabel" class="front" style="display:none">Board / Teacher — front of room</div>
+    <div id="planGrid" class="grid"></div>
+    <p id="seatDetail" class="detail"></p>
+    <div id="planActions" class="row gap" style="display:none">
+      <button id="regenerateBtn" type="button" class="btn secondary" data-i18n="regenerateBtn">Shuffle again</button>
+      <button id="copyBtn" type="button" class="btn secondary" data-i18n="copyBtn">Copy plan as text</button>
+      <button id="clearPlanBtn" type="button" class="btn secondary" data-i18n="clearPlanBtn">Clear plan</button>
+    </div>
+    <p id="copyMsg" class="hint"></p>
+    <textarea id="copyFallback" rows="10" readonly style="display:none"></textarea>
+  </section>
+</main>
+
+<footer class="foot" data-i18n="footerNote">Fully offline — names and plans never leave your browser.</footer>
+
+<script src="js/seating.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
